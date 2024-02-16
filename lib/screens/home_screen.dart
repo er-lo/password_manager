@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:password_manager/models/password_database.dart';
 import 'package:password_manager/models/password_model.dart';
+import 'package:password_manager/screens/password_info_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -31,18 +32,23 @@ class _HomePageState extends State<HomePage> {
       builder: (context) => AlertDialog(
         content: Column(
           children: [
+            const Text("Email"),
             TextField(
               controller: emailController,
             ),
+            const Text("User name"),
             TextField(
               controller: userNameController,
             ),
+            const Text("Password"),
             TextField(
               controller: passwordController,
             ),
+            const Text("notes"),
             TextField(
               controller: noteController,
             ),
+            const Text("Website / App name"),
             TextField(
               controller: websiteController,
             ),
@@ -95,7 +101,17 @@ class _HomePageState extends State<HomePage> {
           final password = currentPasswords[index];
 
           return ListTile(
-            title: Text(password.email),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      PasswordInformationPage(password: password),
+                ),
+              );
+            },
+            title: Text(password.website),
+            subtitle: Text(password.email),
             trailing: IconButton(
                 onPressed: () {
                   context.read<PasswordDatabase>().deletePassword(password.id);
