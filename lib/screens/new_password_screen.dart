@@ -10,7 +10,6 @@ class NewPasswordPage extends StatefulWidget {
 }
 
 class _NewPasswordPageState extends State<NewPasswordPage> {
-
   final emailController = TextEditingController();
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -79,20 +78,23 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
             ),
             const SizedBox(height: 8),
             const SizedBox(height: 24),
-            OutlinedButton(onPressed: (){
-              context.read<PasswordDatabase>().addPassword(
-                  emailController.text,
-                  userNameController.text,
-                  passwordController.text,
-                  noteController.text,
-                  websiteController.text);
-              emailController.clear();
-              userNameController.clear();
-              passwordController.clear();
-              noteController.clear();
-              websiteController.clear();
-              Navigator.pop(context);
-            }, child: Text("hello"),),
+            OutlinedButton(
+              onPressed: () {
+                context.read<PasswordDatabase>().addPassword(
+                    emailController.text,
+                    userNameController.text,
+                    passwordController.text,
+                    noteController.text,
+                    websiteController.text);
+                emailController.clear();
+                userNameController.clear();
+                passwordController.clear();
+                noteController.clear();
+                websiteController.clear();
+                Navigator.pop(context);
+              },
+              child: const Text("SAVE"),
+            ),
           ],
         ),
       ),
