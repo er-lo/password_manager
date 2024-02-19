@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:password_manager/models/password_database.dart';
 import 'package:password_manager/models/password_model.dart';
+import 'package:password_manager/screens/new_password_screen.dart';
 import 'package:password_manager/screens/password_info_screen.dart';
 import 'package:provider/provider.dart';
 
@@ -26,58 +28,6 @@ class _HomePageState extends State<HomePage> {
   final noteController = TextEditingController();
   final websiteController = TextEditingController();
 
-  void createPassword() {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        content: Column(
-          children: [
-            const Text("Email"),
-            TextField(
-              controller: emailController,
-            ),
-            const Text("User name"),
-            TextField(
-              controller: userNameController,
-            ),
-            const Text("Password"),
-            TextField(
-              controller: passwordController,
-            ),
-            const Text("notes"),
-            TextField(
-              controller: noteController,
-            ),
-            const Text("Website / App name"),
-            TextField(
-              controller: websiteController,
-            ),
-          ],
-        ),
-        actions: [
-          MaterialButton(
-            onPressed: () {
-              context.read<PasswordDatabase>().addPassword(
-                  emailController.text,
-                  userNameController.text,
-                  passwordController.text,
-                  noteController.text,
-                  websiteController.text);
-
-              emailController.clear();
-              userNameController.clear();
-              passwordController.clear();
-              noteController.clear();
-              websiteController.clear();
-              Navigator.pop(context);
-            },
-            child: const Text("Create"),
-          ),
-        ],
-      ),
-    );
-  }
-
   void readPasswords() {
     context.read<PasswordDatabase>().fetchPasswords();
   }
@@ -89,13 +39,24 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Pass Vault"),
+        leading: IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.menu),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: createPassword,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const NewPasswordPage(),
+            ),
+          );
+        },
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(
+        padding: const EdgeInsets.all(16.0),
         itemCount: currentPasswords.length,
         itemBuilder: (context, index) {
           final password = currentPasswords[index];
@@ -110,14 +71,13 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
+            leading: const Icon(Icons.check),
             title: Text(password.website),
             subtitle: Text(password.email),
-            trailing: IconButton(
-                onPressed: () {
-                  context.read<PasswordDatabase>().deletePassword(password.id);
-                },
-                icon: const Icon(Icons.delete)),
+            trailing: const Icon(Icons.copy),
           );
+
+          //         context.read<PasswordDatabase>().deletePassword(password.id);
         },
       ),
     );
