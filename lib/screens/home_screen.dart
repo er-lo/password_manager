@@ -21,13 +21,6 @@ class _HomePageState extends State<HomePage> {
     readPasswords();
   }
 
-  //text controller
-  final emailController = TextEditingController();
-  final userNameController = TextEditingController();
-  final passwordController = TextEditingController();
-  final noteController = TextEditingController();
-  final websiteController = TextEditingController();
-
   void readPasswords() {
     context.read<PasswordDatabase>().fetchPasswords();
   }
@@ -39,10 +32,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.menu),
-        ),
+        title: const Text("Pass Vault"),
+        centerTitle: false,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -74,7 +65,6 @@ class _HomePageState extends State<HomePage> {
             leading: const Icon(Icons.check),
             title: Text(password.website),
             subtitle: Text(password.email),
-            trailing: const Icon(Icons.copy),
           );
 
           //         context.read<PasswordDatabase>().deletePassword(password.id);
