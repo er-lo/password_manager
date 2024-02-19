@@ -12,7 +12,10 @@ Feel free to install this and use it if you'd like. Also feel free to build onto
 - [ ] Password Generator w/ Custom Rules
 - [ ] Custom Categories / Tags
 - [ ] Dark Mode
-- [ ] Obscure Password on Password Information Screen
+- [ ] UI Consistency
+- [x] Obscure Password on Password Information Screen
+- [x] Add Copy to Clipboard functionality
+- [ ] Allow Password Information Edit
 - [ ] Master Password for App Auth (String or Pin)
 - [ ] Implement FaceID / Fingerprint
 - [ ] Windows / MacOS / Linux implemention?
