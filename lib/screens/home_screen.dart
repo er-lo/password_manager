@@ -62,7 +62,6 @@ class _HomePageState extends State<HomePage> {
                 ),
               );
             },
-            leading: const Icon(Icons.check),
             title: Text(password.website),
             subtitle: Text(password.email),
           );
