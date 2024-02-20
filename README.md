@@ -1,4 +1,10 @@
 # Pass Vault
+<img src="https://github.com/er-lo/password_manager/assets/93694994/ad78875e-f883-428e-bdfe-1ca172cb5bb4" width="250">
+<img src="https://github.com/er-lo/password_manager/assets/93694994/863ceaf7-a6cf-4513-8c37-25daa256d8c6" width="250">
+<img src="https://github.com/er-lo/password_manager/assets/93694994/f8779839-1090-4232-b79e-429b02f1985d" width="250">
+
+
+
 
 ### Pass Vault is a very simple offline password manager
 
